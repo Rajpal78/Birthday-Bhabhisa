@@ -1,0 +1,408 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "Baloo 2", sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.45) 1px, transparent 1px),
+    #f7e8ee;
+  background-size: 32px 32px;
+  color: #222;
+}
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 25px 30px;
+}
+
+
+
+
+
+
+
+.hero {
+  width: min(1000px, 95vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+}
+
+.birthday-text {
+  text-align: center;
+  animation: fadeIn .9s ease both;
+}
+
+.happy,
+.birthday {
+  font-weight: 800;
+  line-height: .82;
+  letter-spacing: -2px;
+  text-shadow: 2px 3px 0 white;
+}
+
+.happy {
+  font-size: clamp(55px, 8vw, 100px);
+  color: white;
+  -webkit-text-stroke: 2px #222;
+}
+
+.birthday {
+  font-size: clamp(55px, 8vw, 100px);
+  color: #b85c7b;
+  -webkit-text-stroke: 2px #222;
+}
+
+.date-pill {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 7px 30px;
+  background: #d47791;
+  border: 3px solid #222;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0 4px 0 #222;
+}
+
+.character-area {
+  position: relative;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  width: 310px;
+  height: 310px;
+  border: 4px solid #222;
+  border-radius: 50%;
+  background: #fffaf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 8px 0 rgba(0,0,0,.08);
+  animation: float 3s ease-in-out infinite;
+}
+
+.teddy {
+  font-size: 145px;
+  filter: drop-shadow(0 8px 2px rgba(0,0,0,.12));
+  user-select: none;
+}
+
+.mini-heart {
+  position: absolute;
+  right: 38px;
+  top: 75px;
+  width: 48px;
+  height: 48px;
+  border: 3px solid #222;
+  border-radius: 50%;
+  background: #c96f8b;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 25px;
+}
+
+.balloon {
+  width: 55px;
+  height: 75px;
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  z-index: 2;
+}
+
+.balloon-one {
+  left: 30px;
+  top: 45px;
+  background: #c96f8b;
+  transform: rotate(-12deg);
+}
+
+.balloon-two {
+  right: 30px;
+  top: 125px;
+  background: #c96f8b;
+  transform: rotate(12deg);
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 22px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid #c96f8b;
+}
+
+.balloon-string {
+  position: absolute;
+  width: 1px;
+  height: 110px;
+  background: #333;
+  z-index: 1;
+}
+
+.string-one {
+  left: 57px;
+  top: 108px;
+  transform: rotate(8deg);
+}
+
+.string-two {
+  right: 58px;
+  top: 190px;
+  transform: rotate(-10deg);
+}
+
+.open-btn {
+  margin-top: 20px;
+  padding: 8px 55px;
+  border: 3px solid #222;
+  border-radius: 30px;
+  background: #b85c7b;
+  color: #222;
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #222;
+  transition: .2s;
+  z-index: 5;
+}
+
+.open-btn:hover {
+  transform: translateY(-3px);
+}
+
+.open-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #222;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(35, 20, 28, .65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  padding: 20px;
+  animation: fadeIn .25s ease;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.letter {
+  position: relative;
+  width: min(720px, 94vw);
+  min-height: 390px;
+  padding: 45px 55px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 20% 20%, #e7b4c3 0 3px, transparent 4px),
+    radial-gradient(circle at 80% 75%, #e7b4c3 0 3px, transparent 4px),
+    #fffaf2;
+  background-size: 90px 90px, 110px 110px, auto;
+  box-shadow: 0 15px 45px rgba(0,0,0,.35);
+  border: 2px solid #eee;
+  transform: scale(.7) rotate(-2deg);
+  animation: letterOpen .45s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.letter-title {
+  text-align: center;
+  font-family: "Pacifico", cursive;
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+
+.letter-title span,
+.letter-sign {
+  color: #b85c7b;
+}
+
+.letter-body {
+  min-height: 210px;
+  border-top: 1px solid #ead8c6;
+  border-bottom: 1px solid #ead8c6;
+  padding: 25px;
+  text-align: center;
+}
+
+.message {
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+.letter-sign {
+  text-align: center;
+  font-family: "Pacifico", cursive;
+  margin-top: 18px;
+  font-size: 18px;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes letterOpen {
+  to { transform: scale(1) rotate(0); }
+}
+
+
+
+
+
+@media (max-width: 700px) {
+  body {
+    overflow: auto;
+  }
+
+  .page {
+    padding-top: 85px;
+    min-height: 100vh;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .birthday-text {
+    order: 1;
+  }
+
+  .character-area {
+    order: 2;
+    height: 390px;
+  }
+
+  .circle {
+    width: 245px;
+    height: 245px;
+  }
+
+  .teddy {
+    font-size: 115px;
+  }
+
+  .balloon-one {
+    left: 25px;
+  }
+
+  .balloon-two {
+    right: 25px;
+  }
+
+  .letter {
+    padding: 35px 20px;
+    min-height: 350px;
+  }
+
+  .message {
+    font-size: 18px;
+  }
+}
+
+
+/* Simple Bhabhi edition */
+body {
+  background: #f8edf1;
+}
+.page {
+  padding-top: 30px;
+}
+.hero {
+  gap: 15px;
+}
+.happy,
+.birthday {
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+}
+.happy {
+  color: #6d4a57;
+  font-size: clamp(48px, 7vw, 82px);
+}
+.birthday {
+  color: #b85c7b;
+  font-size: clamp(44px, 6.5vw, 78px);
+}
+.date-pill {
+  margin-top: 18px;
+  background: #d9b66f;
+  border: 0;
+  box-shadow: none;
+  color: #3d3034;
+}
+.circle {
+  width: 280px;
+  height: 280px;
+  border: 2px solid #d8b9c5;
+  box-shadow: none;
+}
+.teddy {
+  font-size: 125px;
+}
+.balloon {
+  opacity: .85;
+}
+.open-btn {
+  background: #b85c7b;
+  border: 0;
+  box-shadow: none;
+  color: white;
+}
+.letter {
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  border: 1px solid #ead8df;
+}
