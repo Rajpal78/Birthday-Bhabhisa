@@ -1,5 +1,5 @@
 const birthdayPerson = "Bhabhi";
-const birthdayDate = "8/10";
+const birthdayDate = "8 october 2026";
 
 document.getElementById("dateText").textContent = birthdayDate;
 document.getElementById("openBtn").innerHTML = "Open ♥";
